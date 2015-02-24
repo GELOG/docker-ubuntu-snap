@@ -39,7 +39,7 @@ docker run --rm=true -ti -v /docker-volume:/docker-volume gelog/snap index /dock
 wget -O /docker-volume/SRR062634.filt.fastq.gz ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data/HG00096/sequence_read/SRR062634.filt.fastq.gz
 gzip -d /docker-volume/SRR062634.filt.fastq.gz
 ```
-### 4) Run snap on the genome (or chromosome)
+### 4) Align the genome (or chromosome) with snap
 ```
 docker run --rm=true -ti -v /docker-volume:/docker-volume gelog/snap single /docker-volume/snap-index.chr1/ /docker-volume/SRR062634.filt.fastq -o /docker-volume/SRR062634.sam
 ```
