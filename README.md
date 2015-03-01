@@ -26,21 +26,14 @@ Docker images are the basis of containers. Images are read-only, while container
 
 # How to use this image?
 ### 1) Get the reference genome (or chromosome) and unzip it. 
-```
-mkdir /data/
-wget -O /data/chr1.fa.gz http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/chr1.fa.gz
-gzip -d /data/chr1.fa.gz
-```
+    mkdir /data/
+    wget -O /data/chr1.fa.gz http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/chr1.fa.gz
+    gzip -d /data/chr1.fa.gz
 ### 2) Index the reference genome (or chromosome)
-```
-docker run --rm=true -ti -v /data:/data gelog/snap index /data/chr1.fa /data/snap-index.chr1  
-```
+    docker run --rm=true -ti -v /data:/data gelog/snap index /data/chr1.fa /data/snap-index.chr1  
 ### 3) Get a genome (or chromosome)
-```
-wget -O /data/SRR062634.filt.fastq.gz ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data/HG00096/sequence_read/SRR062634.filt.fastq.gz
-gzip -d /data/SRR062634.filt.fastq.gz
-```
+    wget -O /data/SRR062634.filt.fastq.gz ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data/HG00096/sequence_read/SRR062634.filt.fastq.gz
+    gzip -d /data/SRR062634.filt.fastq.gz
+
 ### 4) Align the genome (or chromosome) with Snap
-```
-docker run --rm=true -ti -v /data:/data gelog/snap single /data/snap-index.chr1/ /data/SRR062634.filt.fastq -o /data/SRR062634.sam
-```
+    docker run --rm=true -ti -v /data:/data gelog/snap single /data/snap-index.chr1/ /data/SRR062634.filt.fastq -o /data/SRR062634.sam
